@@ -5,15 +5,28 @@ import "fmt"
 func main() {
 
 	var numero int
+	var opcion string
 
 	menu := "Ingresa el número que quieres transformar "
 
 	fmt.Print(menu)
-
 	fmt.Scanln(&numero)
 
-	optionFacto(numero)  //Terminado
-	optionFibona(numero) //Terminado
+	menu2 := "Quieres transformar el número en 1-. Factoria 2-. Fibonacci"
+	fmt.Println(menu2)
+	fmt.Scanln(&opcion)
+
+	if opcion == "1" {
+		optionFacto(numero)
+		//Terminado
+	} else if opcion == "2" {
+		optionFibona(numero)
+		//Terminado
+	} else {
+		fmt.Println("Información incorrecta. Escribe 1 o 2")
+
+	}
+
 }
 
 func optionFacto(numero int) {
@@ -34,10 +47,15 @@ func optionFibona(number int) {
 func fibonacci(n int) int {
 	a := 0
 	b := 1
-	for i := 0; i < n; i++ {
-		temp := a
-		a = b
-		b = temp + a
+
+	if n < 0 {
+		fmt.Print("Los fibonacci negativos no existen")
+	} else {
+		for i := 0; i < n; i++ {
+			temp := a
+			a = b
+			b = temp + a
+		}
 	}
 	return a
 }
@@ -52,7 +70,6 @@ func factorial(n int) uint64 {
 			factVal *= uint64(i)
 			fmt.Println("Factorial ", i, " = ", factVal)
 		}
-
 	}
 	return factVal
 }
